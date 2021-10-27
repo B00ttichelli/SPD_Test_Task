@@ -12,7 +12,6 @@ import java.util.Date;
 @NoArgsConstructor
 public class UserDTO {
 
-        private Long id;
 
         private String name;
 
@@ -22,6 +21,6 @@ public class UserDTO {
         
         private String phoneNumber;
 
-
+        private String password;
 
 }
