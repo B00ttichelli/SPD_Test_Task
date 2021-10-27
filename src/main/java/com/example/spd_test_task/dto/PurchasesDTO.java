@@ -1,8 +1,7 @@
 package com.example.spd_test_task.dto;
 
-import com.example.spd_test_task.model.Product;
-import com.example.spd_test_task.model.User;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -11,13 +10,14 @@ import java.util.Date;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 public class PurchasesDTO {
 
     private Long id;
 
-    private User user;
+    private UserDTO user;
 
-    private Product product;
+    private ProductDTO product;
 
     private Date dateOfPurchase;
 }

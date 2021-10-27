@@ -31,4 +31,9 @@ public class UserServiceImpl implements UserService {
     public UserDTO findByPhoneNumber(String phoneNumber) {
         return null;
     }
+
+    @Override
+    public UserDTO finById(Long id) {
+        return userMapper.userToUserDto(userRepository.findById(id).orElseThrow());
+    }
 }
