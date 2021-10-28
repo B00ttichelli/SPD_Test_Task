@@ -16,11 +16,11 @@ import java.util.Map;
 public class StatisticDto {
 
 
-    private List<Map<Month, List<UserDTO>>> active;
+    private List<Map<Month, List<UserStatisticDTO>>> active;
 
-    private List<Map<Month, List<UserDTO>>> idle;
+    private List<Map<Month, List<UserStatisticDTO>>> idle;
 
-    private List<Map<Month, List<UserDTO>>> notActive;
+    private List<Map<Month, List<UserStatisticDTO>>> notActive;
 
 
 }

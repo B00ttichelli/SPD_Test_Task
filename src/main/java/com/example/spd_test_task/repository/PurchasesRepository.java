@@ -18,4 +18,5 @@ public interface PurchasesRepository extends JpaRepository<Purchases, Long> {
 
     List<Purchases>findAllByDateOfPurchaseLessThanEqualAndDateOfPurchaseGreaterThanEqual(Date endDate, Date startDate);
     List<Purchases>findAllByDateOfPurchaseBetween(Date endDate, Date startDate);
+    /*List<Purchases>findAllByDateOfPurchaseBetweenAndUserAndId(Date endDate, Date startDate,Long id);*/
 }
