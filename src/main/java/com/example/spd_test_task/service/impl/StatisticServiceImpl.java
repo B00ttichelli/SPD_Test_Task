@@ -111,6 +111,17 @@ public class StatisticServiceImpl implements StatisticService {
             }
         }
 
+        for (Month month : active.keySet()
+        ) {
+            List<UserStatisticDTO> collect = active.get(month)
+                    .stream()
+                    .sorted(Comparator.comparing(UserStatisticDTO::getTotalSpend))
+                    .collect(Collectors.toList());
+
+            active.replace(month, collect);
+
+        }
+
         List<Map<Month, List<UserStatisticDTO>>> activeList = new ArrayList<>();
         activeList.add(active);
         return activeList;

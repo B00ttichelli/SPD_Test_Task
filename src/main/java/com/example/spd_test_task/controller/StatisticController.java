@@ -1,6 +1,5 @@
 package com.example.spd_test_task.controller;
 
-import com.example.spd_test_task.dto.StatisticDto;
 import com.example.spd_test_task.service.StatisticService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;

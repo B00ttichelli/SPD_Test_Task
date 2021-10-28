@@ -6,7 +6,6 @@ import com.example.spd_test_task.model.User;
 import com.example.spd_test_task.repository.UserRepository;
 import com.example.spd_test_task.service.UserService;
 import lombok.AllArgsConstructor;
-import org.springframework.context.annotation.DependsOn;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 

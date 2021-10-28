@@ -10,12 +10,9 @@ import com.example.spd_test_task.model.User;
 import com.example.spd_test_task.repository.ProductRepository;
 import com.example.spd_test_task.repository.PurchasesRepository;
 import com.example.spd_test_task.repository.UserRepository;
-import org.junit.Assert;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.mockito.AdditionalAnswers;
-import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -23,11 +20,8 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import java.math.BigDecimal;
 import java.sql.Date;
 import java.util.Calendar;
-import java.util.Optional;
 
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.ArgumentMatchers.anyLong;
-import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.when;
 
@@ -98,7 +92,6 @@ public class PurchaseServiceTest {
                 .id(1L)
                 .build();
 
-        UserRepository mock = Mockito.mock(UserRepository.class);
 
         doReturn(user).when(userRepository).getById(any(Long.class));
         when(productRepository.getById(any(Long.class))).thenReturn(product);
@@ -107,10 +100,8 @@ public class PurchaseServiceTest {
 
         PurchasesDTO save = purchasesService.save(purchasesDTO);
         Assertions.assertNotNull(save);
-
-        System.out.println(save.getUser().getOrdersSum().intValue());
-
- /*       Assert.assertEquals(save.getUser().getOrdersSum().intValue(),3000);*/
+        Assertions.assertEquals(save.getUser().getName(), userDTO.getName());
+        Assertions.assertEquals(save.getId(), userDTO.getId());
     }
 /*
     */
