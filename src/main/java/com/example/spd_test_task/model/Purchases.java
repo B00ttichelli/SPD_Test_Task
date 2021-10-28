@@ -5,14 +5,14 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.sql.Date;
+
 
 @Entity
 @Table
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-
 public class Purchases {
 
     @Id
@@ -25,10 +25,11 @@ public class Purchases {
 
     @ManyToOne
     @JoinColumn(name = "product_id",referencedColumnName = "id")
-    private Product product;
+    private Product Product;
 
     private String type;
 
+    @Basic
     private Date dateOfPurchase;
 
 }

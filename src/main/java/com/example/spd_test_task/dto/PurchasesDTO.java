@@ -1,11 +1,13 @@
 package com.example.spd_test_task.dto;
 
+import com.example.spd_test_task.enums.PaymentType;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.Date;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -20,4 +22,6 @@ public class PurchasesDTO {
     private ProductDTO product;
 
     private Date dateOfPurchase;
+
+    private PaymentType type;
 }

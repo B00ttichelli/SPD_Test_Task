@@ -10,9 +10,8 @@ import java.math.BigDecimal;
 import java.util.Calendar;
 
 @RestController
-
 public class TestController {
-    //life hack to convert pojo in json
+    //for testing purposes;
     @RequestMapping("/")
     public PurchasesDTO returnJson() {
         UserDTO userDTO = UserDTO.builder()
@@ -44,6 +43,25 @@ public class TestController {
                 "dateOfBirth": "2021-10-27T15:24:33.252+00:00",
                 "phoneNumber": "333-333-33",
                 "password": "TestPassword"
+    },
+        "product": {
+        "productName": "TestProductName",
+                "productPrice": 1000,
+                "id": 1
+    },
+        "dateOfPurchase": "2021-10-27T15:24:33.252+00:00"
+    }*/
+
+
+/*    {
+        "id": null,
+            "user": {
+        "id": 19,
+                "name": null,
+                "surname": null,
+                "dateOfBirth": null,
+                "phoneNumber": null,
+                "password": null
     },
         "product": {
         "productName": "TestProductName",

@@ -1,5 +1,6 @@
 package com.example.spd_test_task.controller;
 
+import com.example.spd_test_task.dto.ProductDTO;
 import com.example.spd_test_task.dto.PurchasesDTO;
 import com.example.spd_test_task.service.PurchasesService;
 import lombok.AllArgsConstructor;

@@ -21,16 +21,14 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserDTO save(UserDTO userDTO) {
+
+
         userDTO.setPassword(passwordEncoder.encode(userDTO.getPassword()));
         User save = userRepository.save(userMapper.userDtoToUser(userDTO));
 
         return userMapper.userToUserDto(save);
     }
 
-    @Override
-    public UserDTO findByPhoneNumber(String phoneNumber) {
-        return null;
-    }
 
     @Override
     public UserDTO finById(Long id) {

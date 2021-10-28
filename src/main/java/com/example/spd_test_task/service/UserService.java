@@ -6,6 +6,6 @@ import org.springframework.stereotype.Service;
 
 public interface UserService {
     UserDTO save (UserDTO userDTO);
-    UserDTO findByPhoneNumber(String phoneNumber );
+
     UserDTO finById(Long id);
 }

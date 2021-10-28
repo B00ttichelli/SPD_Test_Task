@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import org.hibernate.annotations.NaturalId;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 import java.util.Date;
 
 @Entity
@@ -22,7 +23,8 @@ public class User {
 
         private String surname;
 
-        @Temporal(TemporalType.TIMESTAMP)
+        @Basic
+        @Temporal(TemporalType.DATE)
         private Date dateOfBirth;
 
         @NaturalId
@@ -30,5 +32,9 @@ public class User {
 
         private String password;
 
+        private BigDecimal ordersSum;
 
+        private BigDecimal cashSum;
+
+        private BigDecimal cardSum;
 }
