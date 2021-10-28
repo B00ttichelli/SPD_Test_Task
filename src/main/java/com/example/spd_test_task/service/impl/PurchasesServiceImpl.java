@@ -1,7 +1,9 @@
 package com.example.spd_test_task.service.impl;
 
+import com.example.spd_test_task.dto.ProductDTO;
 import com.example.spd_test_task.dto.PurchasesDTO;
 import com.example.spd_test_task.enums.PaymentType;
+import com.example.spd_test_task.mappers.ProductMapper;
 import com.example.spd_test_task.mappers.PurchasesMapper;
 import com.example.spd_test_task.model.Product;
 import com.example.spd_test_task.model.Purchases;
@@ -23,10 +25,13 @@ public class PurchasesServiceImpl implements PurchasesService {
     private final PurchasesMapper purchasesMapper;
     private final UserRepository userRepository;
     private final ProductRepository productRepository;
+    private final  ProductMapper productMapper;
 
     @Override
     @Transactional
     public PurchasesDTO save(PurchasesDTO purchasesDTO) {
+
+        System.out.println("Initial purchase  "+purchasesDTO);
         User user = userRepository.getById(purchasesDTO.getUser().getId());
 
         Product product = productRepository.getById(purchasesDTO.getProduct().getId());
@@ -40,7 +45,12 @@ public class PurchasesServiceImpl implements PurchasesService {
 
         userRepository.save(user);
 
-        Purchases save = purchasesRepository.save(purchasesMapper.purchasesDtoToPurchases(purchasesDTO));
+
+        Purchases purchases = purchasesMapper.purchasesDtoToPurchases(purchasesDTO);
+        purchases.setProduct(product);  // Мапстракт выебывался, пришлось руками засетить
+        Purchases save = purchasesRepository.save(purchases);
+        System.out.println("last Product " +product);
+        System.out.println("last purchase  " + purchasesDTO);
 
         return purchasesMapper.purchasesToPurchasesDto(save);
     }

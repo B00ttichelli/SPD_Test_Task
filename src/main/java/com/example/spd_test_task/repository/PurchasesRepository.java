@@ -13,10 +13,11 @@ import java.util.List;
 @Repository
 public interface PurchasesRepository extends JpaRepository<Purchases, Long> {
 
-    @Query("select p from Purchases p where p.dateOfPurchase between :y and :x")
+ /* @Query("select p from Purchases p where p.dateOfPurchase between :y and :x")
     List<Purchases> findAllByDateRange(@Param("x")Date beginDate, @Param("y") Date endDate);
 
-    List<Purchases>findAllByDateOfPurchaseLessThanEqualAndDateOfPurchaseGreaterThanEqual(Date endDate, Date startDate);
+  List<Purchases>findAllByDateOfPurchaseLessThanEqualAndDateOfPurchaseGreaterThanEqual(Date endDate, Date startDate);*/
     List<Purchases>findAllByDateOfPurchaseBetween(Date endDate, Date startDate);
+
     /*List<Purchases>findAllByDateOfPurchaseBetweenAndUserAndId(Date endDate, Date startDate,Long id);*/
 }

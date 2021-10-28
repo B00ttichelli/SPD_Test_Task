@@ -1,6 +1,7 @@
 package com.example.spd_test_task.model;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.NaturalId;
@@ -14,6 +15,7 @@ import java.util.Date;
 @NoArgsConstructor
 @Data
 @Table(name = "user")
+@Builder
 public class User {
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,7 +29,7 @@ public class User {
         @Temporal(TemporalType.DATE)
         private Date dateOfBirth;
 
-        @NaturalId
+
         private String phoneNumber;
 
         private String password;

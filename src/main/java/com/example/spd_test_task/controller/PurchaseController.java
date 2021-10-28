@@ -4,6 +4,7 @@ import com.example.spd_test_task.dto.ProductDTO;
 import com.example.spd_test_task.dto.PurchasesDTO;
 import com.example.spd_test_task.service.PurchasesService;
 import lombok.AllArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -18,12 +19,12 @@ public class PurchaseController {
     private final PurchasesService purchasesService;
 
     @PostMapping("/purchase")
-    public ResponseEntity<PurchasesDTO> purchase(@RequestBody PurchasesDTO purchasesDTO) {
+    public ResponseEntity purchase(@RequestBody PurchasesDTO purchasesDTO) {
         try {
             return ResponseEntity.ok(purchasesService.save(purchasesDTO));
         } catch (Exception e) {
 
-            return ResponseEntity.badRequest().build();
+            return new ResponseEntity(e.getMessage(),HttpStatus.BAD_REQUEST);
         }
     }
 

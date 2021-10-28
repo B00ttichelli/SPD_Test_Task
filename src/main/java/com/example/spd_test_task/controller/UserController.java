@@ -3,6 +3,7 @@ package com.example.spd_test_task.controller;
 import com.example.spd_test_task.dto.UserDTO;
 import com.example.spd_test_task.service.UserService;
 import lombok.AllArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,12 +16,12 @@ public class UserController {
 
 
     @PostMapping("/register")
-    public ResponseEntity<UserDTO> save(@RequestBody UserDTO user) {
+    public ResponseEntity save(@RequestBody UserDTO user) {
         try {
             return ResponseEntity.ok(userService.save(user));
         } catch (Exception e) {
 
-            return ResponseEntity.badRequest().build();
+            return new ResponseEntity(e.getMessage(), HttpStatus.BAD_REQUEST);
         }
     }
     @GetMapping( "/{id}")  // for testing purposes
