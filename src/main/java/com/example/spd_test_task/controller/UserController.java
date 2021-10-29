@@ -7,6 +7,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.ConstraintViolationException;
+import java.util.ArrayList;
+import java.util.List;
+
 @RestController
 @AllArgsConstructor
 @RequestMapping("api/v1")
@@ -34,13 +38,12 @@ public class UserController {
     }
 
 
-/*   json example for testing {
-        "name": "test",
-            "surname": "test",
-            "dateOfBirth": "2013-10-21T13:28:06.419Z",
-            "phoneNumber": "223221214412",
-            "password": "test"
-    }*/
+@ExceptionHandler(ConstraintViolationException.class)
+    public ResponseEntity<List> validationErrorHandler(ConstraintViolationException e){
+        List<String> errors = new ArrayList<>(e.getConstraintViolations().size());
+        e.getConstraintViolations().forEach(a->errors.add(a.getPropertyPath()+" : "+ a.getMessage()));
+        return new ResponseEntity<>(errors,HttpStatus.BAD_REQUEST);
+}
 
 
 }
