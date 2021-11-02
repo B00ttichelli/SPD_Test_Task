@@ -23,8 +23,14 @@ public class PurchaseController {
             return ResponseEntity.ok(purchasesService.save(purchasesDTO));
         } catch (Exception e) {
 
-            return new ResponseEntity(e.getMessage(),HttpStatus.BAD_REQUEST);
+            return new ResponseEntity(e.getMessage(), HttpStatus.BAD_REQUEST);
         }
     }
 
+/*    @ExceptionHandler(ConstraintViolationException.class)
+    public ResponseEntity<List> validationErrorHandler(ConstraintViolationException e) {
+        List<String> errors = new ArrayList<>(e.getConstraintViolations().size());
+        e.getConstraintViolations().forEach(a -> errors.add(a.getPropertyPath() + " : " + a.getMessage()));
+        return new ResponseEntity<>(errors, HttpStatus.BAD_REQUEST);
+    }*/
 }
